@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>梧州赛后感受</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #330B15;
+            color: #C9A359;
+            text-align: center;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+        .header-logo {
+            width: 300px;
+            margin-bottom: 0px;
+        }
+        .entry {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .name {
+            font-weight: bold;
+            font-size: 24px;
+            color: #C9A359;
+        }
+        .feedback {
+            margin-top: 5px;
+            font-size: 16px;
+            white-space: pre-wrap;
+            color: white;
+            line-height: 1.6;
+        }
+        .feedback p {
+            margin: 0.35em 0;
+        }
+        .highlight {
+            color: #E7D7B7;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Use the new link for the logo -->
+        <img src="https://falcons-1347176340.cos.ap-guangzhou.myqcloud.com/logo%20trans.png" alt="Falcons Logo" class="header-logo" />
+        <h2>梧州赛后感受</h2>
+        <div id="feedback-container"></div>
+    </div>
+    <script>
+        // For clarity, what's the expected behavior if a line has nested <strong> tags?
+        // Currently, we remove them and highlight only certain phrases. If there's any further details, let us know!
+
+        function cleanText(original) {
+            // Remove <strong> tags
+            let cleaned = original.replace(/<strong>/gi, "").replace(/<\/strong>/gi, "");
+            // Fix certain text
+            cleaned = cleaned.replace(/没有什么oDline之分/g, "没有什么O、Dline之分");
+            return cleaned;
+        }
+
+        // A set of phrases to highlight
+        const keyPhrases = [
+            "我再也没办法忍住我的泪水",
+            "这句话永远有力量",
+            "不知觉的拼尽全力",
+            "这是曾经的老队员对我们的喊声",
+            "需要在强压下保持稳定。需要把自己看作是一支成熟的队伍了",
+            "eyes on yourselves",
+            "专注自己的成长的磨练，不要去看别人的问题，别人的短板",
+            "面对任何对手都能无惧，都有胜利的信念与信心",
+            "广的视野（深浅和左右）、多的招（首要练高抛）、看清对手防守趋向的能力",
+            "我想把赢的心从60提高到80",
+            "专注于当下，把身体交给训练过的直觉，去完成该做的事",
+            "要去行动、改变，最重要的是心态上想赢、自信和相信队友！",
+            "面对任何对手都能无惧，都有胜利的信念与信心",
+            "强度大一点，好胜心更多一点，竞争性更强一点",
+            "队员的需求和对竞技飞盘的想法",
+            "每一次在队训时候是否竭力防守，是否竭力进攻",
+            "像一股麻绳一样更团结更想拿下每一分",
+            "有时候真的很难把握站的位置的度",
+            "很多人过来跟我说没事的",
+            "falcons不只是一支充满温情与感动的队伍，也是一支有人在背后冷静思考的队伍",
+            "大家需要方向感，需要找到自己提升的方向",
+            "更加凶猛一点",
+            "干净的变向摆脱",
+            "将这种不甘化为努力进步的动力",
+            "能够为队伍做一些事情了",
+            "进攻判断要更有偏重 抓最有威胁的",
+            "每个人的韧劲还有想赢的心",
+            "继续加油吧！Falcons！",
+            "光靠自己是不行的",
+            "在“安全”与“主动创造机会”之间找到更好的平衡",
+            "更早察觉到自己的紧张情绪，并主动调整心态",
+            "整个队伍的韧性",
+            "Handlers要清晰自己的优势",
+            "，然后去沟通、引导其余的队友",
+            "这种持续抗压的能力，是我们在这次比赛中展现出的最大成长。",
+            "我们可以有强烈的求胜心，但不能被胜负束缚。",
+            "建立更强的赛场决策信任，即便对某个战术指令存在疑问，也应该先快速执行",
+            "既能坚定地执行战术，又能轻松自信地迎接比赛，我们才能真正成为一支成熟的队伍"
+        ];
+
+        function highlightPhrases(text) {
+            let result = text;
+            keyPhrases.forEach(phrase => {
+                const re = new RegExp(phrase, 'gi');
+                result = result.replace(re, match => {
+                    return `<span class="highlight">${match}</span>`;
+                });
+            });
+            return result;
+        }
+
+        function processParagraphs(text) {
+            const paragraphs = text.split(/\n+/);
+            return paragraphs.map(par => `<p>${par}</p>`).join("\n");
+        }
+
+        const feedbackEntries = [
+            {
+                name: "陈雅霖",
+                feedback: "Falcons需要在<strong>强压</strong>下保持稳定。需要把自己看作是一支<strong>成熟</strong>的队伍了，不能再用我们是一支新队伍，我们打盘还不久这些借口来安慰自己的每个<strong>失误</strong>和失败。\n即使我们有很多的<strong>新人</strong>，我也很希望看到你们<strong>付出</strong>更多的时间和<strong>努力</strong>，成为一个厉害的人。未来无论你是否还在Falcons，你都是一个在<strong>比赛</strong>中有能力，有<strong>抗压</strong>，稳定的那个点。 \n我也很希望每个人都可以<strong>专注</strong>自己的成长的磨练，不要去看别人的问题，别人的短板，eyes on yourselves，这是我今年想要看到的每个人的样子。"
+            },
+            {
+                name: "伍芳洁",
+                feedback: "1. 位置上，和从前只当个补副han位的cutter/临时副han一下不同了。真的站在handle位置上来才发现自己在场上多重要，后悔没能给团队做更多、更好。\n现在起就认清自己的定位和优势，锚定个点！我需要广的视野（深浅和左右）、多的招（首要练高抛）、看清对手防守趋向的能力。天赋上可能是差了点哈，但这些能力完全是可以习得的（而且我有我的优势。我的脑子还是蛮冷静的）。自己再根据以上展开制定训练计划。训练中也多把自己放handle位，多观察别的handle的选择\n\n2. 真的<strong>想<strong>赢</strong></strong>吗？（虽然可耻但我不禁要这么质疑自己）\n来到我们的第三个赛季了，我们已经不是小鹰了，我想把<strong>赢</strong>的心从60提高到80！<strong><strong>好胜心</strong></strong>应该也能习得来吧！\n我在生活（包括打网球<strong>比赛</strong>）上太佛了，但毕竟生活不像竞技体育那么残酷。这种<strong>心态</strong>不应该带到飞盘场上来，自己应该是个多面的人。要去<strong>行动</strong>、<strong>改变</strong>，最重要的是<strong>心态</strong>上<strong>想<strong>赢</strong></strong>、<strong><strong>自信</strong></strong>和<strong>相信队友</strong>！\n\n3. 就是哪个盘没处理好的具体的问题了。entj是这样的了"
+            },
+            {
+                name: "唐萃元",
+                feedback: "感受：\n这次<strong>比赛</strong>还是很<strong><strong>开心</strong></strong>的，受到很多人的鼓舞，Carmen，yalin等等，也看到了很厉害的<strong>对手</strong>。收到了很多<strong>鼓励</strong>和帮助，也意识到自己的<strong><strong>不足</strong></strong>。\n很感谢队伍给了我很多<strong>信任</strong>与<strong>机会</strong>。这次<strong>比赛</strong>让我看到了自己与<strong>顶尖handler</strong>的<strong>差距</strong>。<strong>Dline</strong>防守后没有很有效的转换为得分，作为han感到很抱歉。会<strong>努力</strong>提升自己的能力的。\n\n和小小队打的时候，我感觉我们也是有希望<strong>赢</strong>的。希望我们以后面对任何<strong>对手</strong>都能无惧，都有胜利的信念与信心。\n\n<strong>比赛</strong>方面：\n有时候sideline的声音很多，指令不是很清晰。在场上时很容易漏掉重要的信息，比如经常区域转manman的时候听不是很清楚，有时候会听不见教练的指令。指令是不是可以更精准更清晰更简洁地表达最重要的信息。\n\n训练方面：\n1、我希望我们训练的时候<strong>强度</strong>大一点，<strong><strong>好胜心</strong></strong>更多一点，竞争性更强一点。给彼此上点<strong>压力</strong>，把对位的人当作<strong>对手</strong>，将其打败。输<strong>赢</strong>有奖惩之类的。\n2、想知道我们队伍整体这个赛季的规划，打法。"
+            },
+            {
+                name: "K",
+                feedback: "整体感觉自己应该可以做更多。进攻<strong>失误</strong>有点多，第一次和佳娴一条line，<strong>配合</strong><strong>默契</strong>还在磨合，进步效率稍慢。同条line的人应该多在平时训练中多<strong>配合</strong>，才能知道每个队员的习惯和喜好。同时教练也能更了解每个队员。感觉还是要多了解核心队员的需求和对竞技飞盘的想法"
+            },
+            {
+                name: "吕家宁",
+                feedback: "其实没有什么o<strong>Dline</strong>之分， 你队友的表现50%的原因取决于你每一次在队训时候是否<strong>竭力防守</strong>，是否<strong>竭力进攻</strong>，能不能在训练时给到足够的<strong>压力</strong>，是否顶得住足够的<strong>压力</strong>。所以接下来的队训，尤其是赛前队训更要上足<strong>强度</strong>，不争馒头争口气吧"
+            },
+            {
+                name: "匿名",
+                feedback: "总体来说falcons打得很好！\n\n基于季军赛的想法： d的时候第一层体能跟不上，会有swing快了就漏掉的情况，第二层帮挡第一下之后退的不够快，会被直接打穿；o的时候很多double的跑位，cut in不够有效，无法形成威胁"
+            },
+            {
+                name: "匿名",
+                feedback: "\n《让泪水留在梧州，让汗水流在训练场》\n这次我第一次和falcons参加正式的<strong>比赛</strong>，和以往的小型交流赛不太一样，我的感受是更加严肃紧张，以及大家都像一股麻绳一样更团结更想拿下每一分。\n\n作为入队半年多的新队员，当时周六那天在选人参赛的时候我的内心是忐忑不安和<strong>害怕</strong>的，甚至一度纠结要不要买车票和定酒店。当时的纠结点在于，<strong>害怕</strong>自己选上以后如果上场给队伍造成<strong>失误</strong>，或者因为在一些场次上场比较少我心里面会不会不平衡会不会很难过和失望。选上的时候，很<strong><strong>开心</strong></strong>觉得很荣幸。\n\n回想起这两天的<strong>比赛</strong>，我想更多的是遗憾，自己没能做更多以及没能让自己更加放松地去<strong>比赛</strong>。在平时训练赛的时候，防守的时候就经常队友提醒我防下底的人不能只盯着人，需要看盘在哪里，但是我<strong>比赛</strong>的时候还是会有很多担忧，担心回头看盘以后我防的人已经跑去了其他方向或者已经下底更多了，所以注意力更集中在被防人身上。以及在<strong>Dline</strong>第一层的时候，有时候盘会从marker和小翅膀中间穿缝，于是发生过以后下一次我防小翅膀时就更靠中，而不是更靠边，有一次盘很快swing到边线，边线的好多鱼直接给了一个很大的反手oi的盘，推进特别多，这让我觉得很愧疚。有时候真的很难把握站的位置的度。这也是我需要学习的地方。\n\n另外一个让我觉得没有办法原谅自己点是，在和everglow的<strong>比赛</strong>中，Carmen给了我一个盘，我单手接到后离底线只有一步之遥，这个时候我的防守人还没到，肥b已经到得分区了，我忍不住给了她，这个过程很快，我好像在拿到盘就出了，出了一个最烂最屎的没有转速方向也不对的盘。但是我整个人都很懵，后来下line以后回想起来当时我接到盘停住以后，我的防守人刹不住车撞上了我的肩膀，我想我的盘的方向可能因为这一瞬间受到了影响，但是我当时反应去及时call，这也是我以后要注意的点。那个时候是很沮丧的，但是很多人过来跟我说没事的自己掉的盘自己防下来就好了，大家没有第一时间数落或者指责我，真的超级感动。\n\n最后一场是我们和还可以的季军争夺赛，每一分都很重要，我看见大家都<strong>努力</strong>地防守拼命地奔跑想要拿下每一分，大部分时间在场下的我唯一能做的只有祈祷和<strong>鼓励</strong>队友，如果我们<strong>新人</strong>也有能力担起责任，能稳稳地传盘和跑位，我想我们肯定会不一样。我想我能做的还是太少了。uni输了大家都很沮丧，和还可以circle的环节里面，听队长的发言我没有哭，因为我当时想着回去一定要好好<strong>努力</strong>，认真刻苦的训练，但是当包包带着大家一块喊“Falcons，Rise Up”的时候，我再也没办法忍住我的泪水，这是曾经的老队员对我们的喊声，也是曾经没有天赋靠<strong>努力</strong>一点点走到现在成为厉害的队员们对我们这些<strong>新人</strong>们的喊声。这句话永远有力量！\n\n这次<strong>比赛</strong>也让我认识的falcons不只是一支充满温情与感动的队伍，也是一支有人在背后冷静思考的队伍。赛后falcons circle环节，我看见很多人都哭了，大家都说充满了遗憾，如果自己更<strong>努力</strong>一点会不会不一样，但是yalin和洋哥却冷静地一针见血地指出我们的问题，大家需要方向感，需要找到自己提升的方向。\n\n我想我接下来的赛季里面，需要<strong>努力</strong>提升的点是：\n1、manman防守时要养成看被防人的眼神或者快到底线时回头看盘的情况。另外防别人下底的时候，也需要进一步提升自己读盘的能力。防守时也要更加凶猛一点，不要每次人别人很轻松接盘，如果是飘的盘要<strong>努力</strong>争夺一下。\n2、cut in时要做干净的变向摆脱，如果没有<strong>机会</strong>要养成清开去弱侧的习惯。\n3、在区域防守时及时和教练或者line上其他队友沟通，沟通防守应该要把握的度，比如我作为小翅膀应该更靠中或者更靠近边线。\n4、接到盘养成站稳再出盘的好习惯，不着急出盘，前3秒没<strong>机会</strong>要找han回给han。\n\n"
+            },
+            {
+                name: "姐姐",
+                feedback: "对于o line：我认为我们o line的进攻流畅度不够，也不够稳定。han cut之间的进攻衔接不太稳定  无效跑位太多\n对于d line：无论是逼中还是逼边的区域，都防的不太熟练，给<strong>对手</strong>的防守压迫性不够，会容易被穿。感觉可以着重抓一个防守要点来练。\n防下来后的进攻率低  cut要么挂太后不回来  要么没人冲击后场 \n\n但这次<strong>比赛</strong>大家打的真的很不错！！虽然最后差一点点就能拿到名次了  会有点点不甘心！但我会将这种不甘化为<strong>努力</strong>进步的动力的！！！"
+            },
+            {
+                name: "匿名",
+                feedback: "我觉得自己相对于重庆赛有进步，能够为队伍做一些事情了，站在line上没有像之前那么内心<strong>害怕</strong>了，是一个士气高涨想拿下这分的状态。不过也觉得自己还是菜菜的，觉得自己在<strong>Dline</strong>的防守有待加强，看了一些视频片段的确觉得自己作为第一层小翅膀，太关注持盘人了，没有留意到身后非持盘人的动态走向，这也给对方留了很多破区域的破绽。以及cut in的timing，感觉跟han的衔接还是不够流畅，不知道什么时候该自己跑动，什么时候不该自己跑动等等，既满意又不满意，不过还是<strong><strong>开心</strong></strong>的总体上来说。也想成为像Carmen一样猛啊啊啊"
+            },
+            {
+                name: "总攻",
+                feedback: "梧州赛主要的问题\n把握mid防守的前后距离 尤其是视野盲区。相较于wing和deep来讲 mider的移动范围 进攻判断要更有偏重 抓最有威胁的\n在对方未过半场man d和junkd都相对容易转换，在己方得分区就要小心防守后的落位进攻 避免多打少\n较松的防守是很好跑出来折返的，但是要思考区域防守中的高效跑位距离\n快速出盘和出盘方式需要同时考虑\n进攻时候要思考怎么去读最深点位的盘。也要在进攻中多去打多去读这个点"
+            },
+            {
+                name: "佳娴",
+                feedback: "再稳定多点、再敢打一点。多跑动，把握好handler之间的距离。练好基本功。体能很重要。"
+            },
+            {
+                name: "秋泥",
+                feedback: "第一次跟大家伙儿一起出去<strong>比赛</strong> 感受到了每个人的韧劲还有<strong>想<strong>赢</strong></strong>的心，但是光靠自己是不行的 觉得大家场上沟通少了很多，几乎是存在自己的世界里面去跑位去防守，所以导致一些比较容易的点被穿插，不过总的来说还是让我意外的 大家成长都很快也很包容，很爱队里的氛围❤️继续加油吧！Falcons！"
+            },
+            {
+                name: "匿名",
+                feedback: "我个人对于自己不满意的地方，一是在受到一点点干扰的情况下接高盘基本成功率为0，希望以后可以克服；\n二是当小翅膀和第二层wing感觉要有一点layout D的技能，要学习。梧州赛的区域进攻感觉第一天还好，但是第二天开始变得没有前点，人都在后点，导致oline 进攻受影响。而<strong>Dline</strong>放下来以后进攻很不稳定，可能一部分cutter要拉体能 让自己头脑清醒一点，知道什么时候cutin和go deep，而每个人在体力消耗下的稳定出盘和选择很重要。\n最后是区域防守，这次<strong>比赛</strong>出现了一部分人，包括我自己，第一次打某一个位置的情况，但训练的时候从来没有尝试过，希望教练以后可以避免区域防守出现这种情况，其次希望第一层可以是两个老人带一个<strong>新人</strong>，或者是一个老人带一个比较知道怎么防守的<strong>新人</strong>和一个相对没那么清楚怎么防守的<strong>新人</strong>，第一层感觉很多时候不够大，很小的缩成一团在防守。最后是希望区域防守逼边和逼中可以分开学习，已经出现了<strong>新人</strong>混淆的情况"
+            },
+            {
+                name: "米吉",
+                feedback: "这次<strong>比赛</strong>让我经历了不同的<strong>比赛</strong>节奏，也让我对自己和队伍有了更清晰的认识。印象最深刻的一场是第二天对阵酷儿队，那场<strong>比赛</strong>我的状态出乎意料地好。我没有过多思考，甚至现在回想起来都不记得当时具体在想什么，只记得自己完全沉浸在<strong>比赛</strong>里，身体和意识高度统一。每一分的目标都很简单：接住盘、跑出空位、不让盘掉地，帮助队伍顺利得分。当<strong>比赛</strong>能以这样的方式推进时，一切都显得顺畅而自然。这让我意识到，真正打得好的时候，并不是因为想得更多，而是因为<strong>专注</strong>于当下，把身体交给训练过的直觉，去完成该做的事。\n\n但并不是所有<strong>比赛</strong>都能进入这种流畅的节奏。在面对还可以队时，我明显感受到巨大的心理<strong>压力</strong>。作为handler，被对方的高脚杯罩住时，我的脑海里充满了各种杂念：“不能输”“不能<strong>失误</strong>”“盘到了我这里我该怎么办”。我<strong>害怕</strong>自己没站在正确的位置去接应队友，过度关注可能的风险，而没有去主动创造解决方案。这种状态让我变得犹豫，影响了场上的选择。现在回头看，我应该更早察觉到自己的紧张情绪，并主动调整<strong>心态</strong>，不去想比分和结果，而是像打酷儿队时那样，把注意力放回到自己能做的每一个动作上。同时，我需要提醒自己，我的传盘已经比过去稳定得多，不该再陷入“<strong>害怕</strong>掉盘”的心理误区，而是要<strong>信任</strong>自己的正反手出盘，在任何情况下都能安全地把盘交给队友。\n\n这次<strong>比赛</strong>，我的接盘状态明显比训练时更好，可能是<strong>比赛</strong>中的高度<strong>专注</strong>让我对盘的判断更精准，接盘的容错率也更大。但传盘上却比训练时更保守，我在<strong>比赛</strong>中倾向于选择安全的swing或reset，而不是主动推进。这样虽然降低了<strong>失误</strong>率，但也意味着我在进攻上缺少了一些侵略性，没有完全发挥自己的能力。未来的<strong>比赛</strong>里，我希望在“安全”与“主动创造<strong>机会</strong>”之间找到更好的平衡，让自己的传盘在稳定的基础上，也能带来更有效的推进。\n\n在战术执行上，我们还有许多可以提升的地方。\n面对区域防守时，我们赛前有针对性训练过补位和转换策略，但<strong>比赛</strong>中多次出现补位不及时、甚至没有补位的情况，导致盘无法顺利从边线转移。此外，我们在Crossfield的利用也不够充分，Handler很少能找到横向转移的<strong>机会</strong>，而Cutter站位也往往缺少主动性，没有及时提供横向出盘的选择。这两个问题导致我们在面对高<strong>强度</strong>区域防守时，很难有效破防，未来需要进一步优化这些细节。\n\n还有必须提到的是我们D-line在转化效率方面需要去做的<strong>反思</strong>和提升，即使是布置了D and Huck的策略，但那不意味着我们就是毫无目的地去抽盘，而丢失掉好不容易得来的盘权。Handlers要清晰自己的优势（比如，是不是需要power position才能打出高质量的长传，等），然后去沟通、引导其余的队友，让cutters知道如何去<strong>配合</strong>打出能够有效的进攻威胁。\n\n尽管在战术执行上还有待提升，我依然对队伍的成长感到非常欣喜。这次<strong>比赛</strong>让我看到整个队伍的韧性，尤其是D-line。很多时候，我们需要连续防守三、四次甚至更多次，才能真正转换得分，但即便如此，队员们依然保持着高<strong>强度</strong>的防守，没有松懈，也没有放弃。这种持续<strong>抗压</strong>的能力，是我们在这次<strong>比赛</strong>中展现出的最大成长。而相较之下，我们在战术调整的执行力上还有很大的提升空间。教练和Sideline给出的战术调整，往往需要反复强调才能落实，而这在<strong>比赛</strong>时间有限的情况下是一个很大的挑战。比如D-line制造出turns的时候一定要有cutter坚决下底，给handler一个deep的选项。但很意外在整整两天的<strong>比赛</strong>中，我并没有看到这个情况有被很好地、有意识地落实和执行，包括D-line cutters的分工、谁去第一下跑这个底，在攻防转换的瞬间，场上7个人应该各做什么事情，在我看来都是很模糊的。非常遗憾的也是，在这种情况出现了之后，在后续的一分又一分里，我也没有听到教练或任何一个队员去主动发起讨论，及时清晰战术细节和各位置在常见情况的优先责任。这是完全能够迅速改善的。\n\n我希望我们能建立更强的赛场决策<strong>信任</strong>，即便对某个战术指令存在疑问，也应该先快速执行，赛后再复盘，而不是在场上犹豫或怀疑。特别是在高压<strong>比赛</strong>中，能否迅速适应并执行调整，往往是决定胜负的关键。\n\n这次<strong>比赛</strong>让我印象最深刻的<strong>对手</strong>不是某支队伍的技术，而是香港的小小队的<strong>比赛</strong><strong>心态</strong>。他们不仅技术扎实，而且打得轻松、自如、享受<strong>比赛</strong>。这当然和他们的经验与能力有关，但更重要的是他们能在高<strong>强度</strong>的<strong>比赛</strong>中保持放松，展现出对<strong>比赛</strong>的热爱和<strong>信任</strong>。这让我意识到，Falcons不仅要成为一支踏实认真的队伍，还要学会在<strong>比赛</strong>中享受过程。我们可以有强烈的求胜心，但不能被胜负束缚。只有当我们真正放松、相信自己、<strong>信任</strong>队友，<strong>比赛</strong>才会变得流畅，而我们也才能发挥出最好的水平。\n\n从个人角度来说，这次<strong>比赛</strong>最大的收获是意识到了赛前心理建设的重要性。在<strong>比赛</strong>前，我需要不仅仅是战术上的准备，还需要预想可能的<strong>比赛</strong>走势，并做好心理准备——如果我们领先，该如何保持节奏？如果<strong>比赛</strong>胶着，该如何稳住<strong>心态</strong>？如果比分落后，又该如何调整？当我能接受所有可能的情景，并对自己的应对策略有把握时，我就会带着更强的掌控感上场，而不会被突发的<strong>比赛</strong>节奏左右。这种心理建设可能会成为未来赛前准备的重要一环，帮助我自己，也帮助Falcons在关键时刻更有掌控力。\n\n这次<strong>比赛</strong>让我看到自己的成长，也让我明确了未来的方向。我需要在高压环境下更快地调整<strong>心态</strong>，更果断地执行战术，更主动地带动队伍。而对于Falcons来说，我们不仅要成为一支有纪律、有执行力的队伍，还要学会在<strong>比赛</strong>中找到放松感，让每一场<strong>比赛</strong>不只是挑战，更是享受。只有当我们既能坚定地执行战术，又能轻松<strong><strong>自信</strong></strong>地迎接<strong>比赛</strong>，我们才能真正成为一支<strong>成熟</strong>的队伍。"
+            },
+            {
+                name: "小梓",
+                feedback: "亲爱的Falcons队友！\n\n梧州的<strong>比赛</strong>真是令人印象深刻！虽然我没有参加<strong>比赛</strong>，但我在直播里见证了你们的拼搏与团结，整体水平的提高，都没有辜负你们的整日训练。每个精准的传盘、每次奋力的防守、每一个<strong>默契</strong>的<strong>配合</strong>，都让我感到平日你们一整天训练的成果在赛场体现。这一次整体看上去，流畅，<strong>配合</strong>都比以前看的好很多\n你们在场上展现出的不仅仅是技术，更是对团队精神的完美诠释，每一次的<strong>相信队友</strong>，互相磨合。\n虽然第三名近在咫尺，你们都已经证明了自己是真的能拼，一到赛场，不知觉的拼尽全力。\n希望我们继续保持这份激情和信念，\n等我康复归队，一定珍惜每一场训练<strong>机会</strong>，\n未来的每场<strong>比赛</strong>，我们一起迎接挑战，迎接更强的自己，迎接更好的falcons！\n加油，Falcons！我们是最棒的！\n"
+            }
+        ];
+
+        const container = document.getElementById("feedback-container");
+        feedbackEntries.forEach((entry, index) => {
+            const div = document.createElement("div");
+            div.classList.add("entry");
+
+            let cleaned = cleanText(entry.feedback);
+            let highlighted = highlightPhrases(cleaned);
+            let processed = processParagraphs(highlighted);
+
+            div.innerHTML = `<div class="name">${entry.name}</div><div class="feedback">${processed}</div>`;
+            container.appendChild(div);
+        });
+
+        // Additional test cases
+        console.log("[Test] Checking cleanText function:");
+        console.log(cleanText("这是一个测试 <strong>强调</strong>.") === "这是一个测试 强调.");
+        console.log(cleanText("没有什么oDline之分") === "没有什么O、Dline之分");
+
+        // Checking highlightPhrases function:
+        console.log("[Test] Checking highlightPhrases function:");
+        let testString = "我再也没办法忍住我的泪水，这句话永远有力量，但我只能不知觉的拼尽全力。";
+        let resultHighlight = highlightPhrases(testString);
+        console.log(resultHighlight);
+        // Expect the phrases to be wrapped in <span class="highlight"> ... </span>
+
+    </script>
+</body>
+</html>
